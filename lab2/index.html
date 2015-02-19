@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+    <title>Lab 2: APIs</title>
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,700%7CPoiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1 id="main-heading">Your Local Weather</h1>
+    <h2 id="sub-heading">Lab 2: APIs</h2>
+    
+    <section id="weather-wrapper">
+      <section id="weather-box">
+        <section id="error"></section>
+        <section id="temp">
+          <div id="weather-pic"></div>
+          <div id="degrees"></div>
+          <div id="feels-like"></div>
+        </section>
+        <section id="weather-desc">
+          <h2 id="city"></h2>
+          <div id="description"></div>
+          <div id="precip"></div>
+          <div id="wind"></div>
+          <div id="humidity"></div>
+        </section>
+      </section>
+    </section>
+    
+    <div id="refresh">Refresh</div>
+    
+    <!-- Scripts at end of document is best practice for page load times -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
