@@ -1,0 +1,254 @@
+/* COLORS:
+ * marsala: 173,101,95
+ * toasted almond: 210,178,154
+ * glacier grey: 198,203,204
+ * lucite green: 125,207,182
+ *
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  border-top: 50px solid rgba(125,207,182,1); 
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0;
+  font-family: 'Patua One', Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  font-weight: normal;
+  color: rgba(198,203,204,1);
+}
+
+#tweet-form {
+  width: 495px;
+  margin: 10px auto;
+}
+
+#tweet-form span {
+  margin: 0 10px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: rgba(210,178,154,1);
+}
+
+#tweet-form span.note {
+  color: rgba(198,203,204,1);
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+#tweet-form span.note i {
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+#tweet-form input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid rgba(198,203,204,1);
+  padding: 2px;
+  font-family: 'Patua One', Helvetica, Arial, sans-serif;
+  color: rgba(198,203,204,1);
+}
+
+#tweet-form #query {
+  width: 200px;
+}
+
+#tweet-form #count {
+  width: 30px;
+  text-align: center;
+}
+
+#tweet-form button {
+  border: none;
+  padding: 5px;
+  font-family: 'Montserrat';
+}
+
+#tweet-form button:disabled {
+  background: rgba(198,203,204,0.2);
+  color: rgba(173,101,95,0.2);
+}
+
+#tweet-form button:enabled {
+  cursor: pointer;
+  background: rgba(125,207,182,0.4);
+  color: rgba(108,153,154,1);
+}
+
+#tweet-form button:enabled:hover {
+  background: rgba(125,207,182,0.8);
+  color: rgba(108,153,154,1);
+}
+
+ul {
+  list-style: none;
+  display: block;
+  width: 800px;
+  margin: 20px auto;
+}
+
+ul li {
+  overflow: none;
+  display: block;
+  clear: both;
+  margin: 5px 0;
+  padding: 10px;
+  font-family: 'Montserrat';
+  background: rgba(198,203,204,0.2);
+  overflow: hidden;
+}
+
+.query-title {
+  padding: 3px 10px;
+  background: rgba(173,101,95,1);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.prof-pic {
+  float: left;
+}
+
+.info {
+  float: right;
+  width: 720px;
+}
+
+.user-info {
+  color: rgba(173,101,95,1);
+  font-size: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-info span {
+  display: block;
+}
+
+.tweet {
+  padding: 3px;
+  display: block;
+  font-size: 12px;
+}
+
+.stats {
+  font-size: 10px;
+  color: rgba(210,178,154,1);
+}
+
+.ng-hide {
+  display: none;
+}
+
+.waiting {
+  background: #fff;
+  text-align: center;
+}
+
+.save, .save-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.save {
+  position: fixed;
+  display: flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.save-overlay {
+  position: absolute;
+  z-index: 1;
+  background: rgba(173,101,95, 0.9);
+  /*opacity: 0;*/
+  -webkit-transition: opacity 0.3s;
+     -moz-transition: opacity 0.3s;
+      -ms-transition: opacity 0.3s;
+       -o-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+  -webkit-animation: openSave 0.3s;
+     -moz-animation: openSave 0.3s;
+       -o-animation: openSave 0.3s;
+          animation: openSave 0.3s;
+}
+
+.save-content {
+  width: 560px;
+  height: 250px;
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+  /*opacity: 0;*/
+  -webkit-animation: openSave 0.3s;
+     -moz-animation: openSave 0.3s;
+       -o-animation: openSave 0.3s;
+          animation: openSave 0.3s;
+}
+
+.save-content .save-text {
+  line-height: 4.5;
+  font-size: 40px;
+  font-family: 'Montserrat';
+  color: rgba(125,207,182,1);
+}
+
+.save-content .save-close {
+  display: block;
+  background: rgba(125,207,182,1);
+  color: #fff;
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  padding: 10px 15px;
+  margin: -20px auto 0;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+     -moz-transition: background 0.3s;
+      -ms-transition: background 0.3s;
+       -o-transition: background 0.3s;
+          transition: background 0.3s;
+}
+
+.save-content .save-close:hover {
+  background: rgba(95,187,152,1);
+}
+
+@-webkit-keyframes openSave {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes openSave {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes openSave {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes openSave {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
