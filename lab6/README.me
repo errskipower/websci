@@ -3,7 +3,7 @@
   Emily Roth
   Web Science Systems Development
   Spring 2015
-  Lab 5: Node.js, AngularJS, and Twitter API
+  Lab 6: Node.js, Tweets.json to CSV
 
 
 #INSTALL
@@ -20,9 +20,13 @@
 
 #DETAILS
 
-  For this lab, I created a Twitter feed app that pulls "count" number of tweets of a specific "query" from the most recent tweets as they are being tweeted.  The app will pull all tweets until the user's tweet "limit" has been reached as set by the Node.js Twit module and the Twitter API.  A user MUST enter both a query and a count in order to view tweets.  The default count is set to 20 tweets.
+  For this lab, I added the ability to save a csv file from the json tweets file created in lab 5.  The app works the same way as it did in lab 5, but now, after you pull tweets and a .json file is saved from that, you can enter a .csv file name and save it.  The app will take the previously saved .json file, read it, and import it to a csv file with the user-specified file name.  Doing it this way ensures that the .json file exists every time.  A prompt will show once the .csv file is saved.  If a user tries to save a csv file with the same name as one previously saved, it will overwrite the existing one with the new data.
+  
+  FROM LAB 5 README.me ===============================================================================================
+    For this lab, I created a Twitter feed app that pulls "count" number of tweets of a specific "query" from the most recent tweets as they are being tweeted.  The app will pull all tweets until the user's tweet "limit" has been reached as set by the Node.js Twit module and the Twitter API.  A user MUST enter both a query and a count in order to view tweets.  The default count is set to 20 tweets.
 
-  Once "count" tweets have been pulled, the app will save the first "count" number of tweets to a file using naming convention: "[timestamp]_[query]_tweets.json".  The file can be found in the /json_files directory.  When you enter a new query, a new file with "count" tweets will be saved and all new query tweets will appear on web page.
+    Once "count" tweets have been pulled, the app will save the first "count" number of tweets to a file using naming convention: "[timestamp]_[query]_tweets.json".  The file can be found in the /json_files directory.  When you enter a new query, a new file with "count" tweets will be saved and all new query tweets will appear on web page.
+  ====================================================================================================================
 
 
 # RESOURCES
