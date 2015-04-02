@@ -1,0 +1,40 @@
+#README 
+
+  Emily Roth
+  Web Science Systems Development
+  Spring 2015
+  Lab 5: Node.js, AngularJS, and Twitter API
+
+
+#INSTALL
+
+ ** You must have npm, node.js, and bower installed on your machine **
+
+ ** Dependencies should be installed, but if not, run: **
+      npm install
+      bower install
+
+ ** To run app: **
+      node server.js
+
+
+#DETAILS
+
+  For this lab, I created a Twitter feed app that pulls "count" number of tweets of a specific "query" from the most recent tweets as they are being tweeted.  The app will pull all tweets until the user's tweet "limit" has been reached as set by the Node.js Twit module and the Twitter API.  A user MUST enter both a query and a count in order to view tweets.  The default count is set to 20 tweets.
+
+  Once "count" tweets have been pulled, the app will save the first "count" number of tweets to a file using naming convention: "[timestamp]_[query]_tweets.json".  The file can be found in the /json_files directory.  When you enter a new query, a new file with "count" tweets will be saved and all new query tweets will appear on web page.
+
+
+# RESOURCES
+  
+  Twit - Twitter API client for node
+    https://github.com/ttezel/twit
+
+  Help with communication between server.js and app.js 
+    http://thejackalofjavascript.com/twitter-live-search/
+
+  Angular API
+    https://docs.angularjs.org/api/
+
+  Node FileSystem API
+    https://nodejs.org/api/fs.html
