@@ -1,0 +1,60 @@
+#README 
+
+  Emily Roth
+  Web Science Systems Development
+  Spring 2015
+  Lab 7: Node.js, MongoDB, and Tweets
+
+
+#INSTALL
+
+ ** You must have npm, node.js, and bower installed on your machine **
+
+ ** Dependencies should be installed, but if not, run: **
+      npm install
+      bower install
+
+ ** To run app: **
+      node server.js
+
+
+#DETAILS
+
+  For this lab, I added three buttons and one input field to the app previously made in labs 5 and 6.  The "Build DB" button will become active once a user enters a query, clicks "Pull Tweets", and "count" number of tweets have been found and read.  Once the user clicks "Build DB", a mongoDB of "count" number of tweets will be created using mongoose.  When the db has been created and added to, the "Read from DB" button will become active.  Once this button is clicked, all tweets will be read from the database and display on the page along side the twitter stream.  The "Save JSON" button and "JSON File Name" field will become active once tweets are saved to the DB.  The user can then enter a file name and click the save button to savce a .json file all all tweets stored in the DB. The file can be found in the /json_files directory.  For this assignment, you can only build a DB once per socket connection.
+
+
+  FROM LAB 6 README.me ===============================================================================================
+
+  For this lab, I added the ability to save a csv file from the json tweets file created in lab 5.  The app works the same way as it did in lab 5, but now, after you pull tweets and a .json file is saved from that, you can enter a .csv file name and save it.  The app will take the previously saved .json file, read it, and import it to a csv file with the user-specified file name.  Doing it this way ensures that the .json file exists every time.  A prompt will show once the .csv file is saved.  If a user tries to save a csv file with the same name as one previously saved, it will overwrite the existing one with the new data.
+  
+  FROM LAB 5 README.me ===============================================================================================
+    For this lab, I created a Twitter feed app that pulls "count" number of tweets of a specific "query" from the most recent tweets as they are being tweeted.  The app will pull all tweets until the user's tweet "limit" has been reached as set by the Node.js Twit module and the Twitter API.  A user MUST enter both a query and a count in order to view tweets.  The default count is set to 20 tweets.
+
+    Once "count" tweets have been pulled, the app will save the first "count" number of tweets to a file using naming convention: "[timestamp]_[query]_tweets.json".  The file can be found in the /json_files directory.  When you enter a new query, a new file with "count" tweets will be saved and all new query tweets will appear on web page.
+  ====================================================================================================================
+
+
+# RESOURCES
+
+  Mongoose Documentation
+    http://mongoosejs.com/docs/api.html
+
+  FROM LAB 6 README.me ===============================================================================================
+
+    json2csv - Node Package
+      https://www.npmjs.com/package/json2csv
+
+  FROM LAB 5 README.me ===============================================================================================
+  
+    Twit - Twitter API client for node
+      https://github.com/ttezel/twit
+
+    Help with communication between server.js and app.js 
+      http://thejackalofjavascript.com/twitter-live-search/
+
+    Angular API
+      https://docs.angularjs.org/api/
+
+    Node FileSystem API
+      https://nodejs.org/api/fs.html
+  ====================================================================================================================

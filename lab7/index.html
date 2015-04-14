@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Patua+One|Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Lab 7: Node.js, MongoDB, and Tweets</title>
+  </head>
+  <body data-ng-app="tweetsApp">
+    <h1>Lab 7: Node.js, MongoDB, and Tweets</h1>
+    <div data-ng-controller="tweetsController">
+
+      <form id="tweet-form" data-ng-submit="newQuery(tweetCount, query)">
+        <span class="center-form">
+          <span>Query <input type="text" data-ng-model="query" id="query"></span>
+          <span>Count <input type="text" data-ng-model="tweetCount" value="20" id="count"></span>
+          <button type="submit" name="pull" data-ng-disabled="!tweetCount || !query">Pull Tweets</button><br>
+        </span>
+        <span class="center-form">
+          <span class="note">* Note: <i>Count</i> is number of tweets to save to json file.  Currently set to save {{tweetCount}} tweets to file.</span>
+        </span>
+        <span class="center-form">
+          <span>CSV File Name <input type="text" data-ng-model="csvFileName" value="" data-ng-disabled="!isJsonToConvert"></span>
+          <button type="button" name="csv" data-ng-disabled="!isJsonToConvert" data-ng-click="saveCSV()">Save CSV</button>
+        </span>
+        <span class="center-form">
+          <button type="button" name="build_db" data-ng-disabled="!canBuildDB" data-ng-click="buildDB()">Build DB</button>
+          <button type="button" name="read_db" data-ng-disabled="!canReadDB" data-ng-click="readDB()">Read from DB</button>
+          <span>JSON File Name <input type="text" data-ng-model="jsonFileName" value="" data-ng-disabled="!isDBSaved"></span>
+          <button type="button" name="json_db" data-ng-disabled="!isDBSaved" data-ng-click="jsonDB()">Save JSON</button>
+        </span>
+        <span class="center-form">
+        </span>
+        <span class="center-form">
+          <span class="note">* Note: You can only build and read from the DB once.</span>
+        </span>
+      </form>
+
+      <div id="tweet-list-wrap">
+        <ul id="query_tweets">
+          <li class="query-title">{{query}}</li>
+          <li class="waiting" data-ng-show="showWait"><img src="http://s1.postimg.org/n0y7tll0b/load.gif" alt="loading..."></li>
+          <li data-ng-repeat="t in tweets track by $index">
+            <div class="prof-pic">
+              <img ng-src="{{t.user_profile_image_url}}">
+            </div>
+            <div class="info">
+              <div class="user-info">
+                <span class="user-name">@{{t.user.screen_name}}</span>
+                <span class="time">{{t.created_at}}</span>
+              </div>
+              <div class="tweet">
+                {{t.text}}
+              </div>
+              <div class="stats">
+                <span class="retweets"><i class="fa fa-retweet"></i> {{t.retweet_count}}</span>
+                <span class="favorites"><i class="fa fa-star"></i> {{t.favorite_count}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <ul id="db_tweets" data-ng-show="isDBRead">
+          <li class="query-title">Tweets from DB</li>
+          <li data-ng-repeat="t in dbTweets">
+            <div class="prof-pic">
+              <img ng-src="{{t.user.profile_image_url}}">
+            </div>
+            <div class="info">
+              <div class="user-info">
+                <span class="user-name">@{{t.user_screen_name}}</span>
+                <span class="time">{{t.created_at}}</span>
+              </div>
+              <div class="tweet">
+                {{t.text}}
+              </div>
+              <div class="stats">
+                <span class="retweets"><i class="fa fa-retweet"></i> {{t.retweet_count}}</span>
+                <span class="favorites"><i class="fa fa-star"></i> {{t.favorite_count}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="save" data-ng-show="saved">
+        <div class="save-overlay"></div>
+        <div class="save-content">
+          <span class="save-text">
+            {{tweetCount}} tweets saved to file!
+          </span>
+          <button type="button" class="save-close">Close</button>
+        </div>
+      </div>
+
+      <div class="save" data-ng-show="csvSaved">
+        <div class="save-overlay"></div>
+        <div class="save-content">
+          <span class="save-text">
+            {{csvFileName}}.csv saved!
+          </span>
+          <button type="button" class="save-close">Close</button>
+        </div>
+      </div>
+
+      <div class="save" data-ng-show="isDBSaved">
+        <div class="save-overlay"></div>
+        <div class="save-content">
+          <span class="save-text">
+            Tweets added to DB!
+          </span>
+          <button type="button" class="save-close">Close</button>
+        </div>
+      </div>
+
+      <div class="save" data-ng-show="isJsonDBSaved">
+        <div class="save-overlay"></div>
+        <div class="save-content">
+          <span class="save-text">
+            {{jsonFileName}}.json saved!
+          </span>
+          <button type="button" class="save-close">Close</button>
+        </div>
+      </div>
+
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-socket-io/socket.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script src="/app.js"></script>
+
+  </body>
+
+</html>

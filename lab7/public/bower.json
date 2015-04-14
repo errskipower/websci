@@ -1,0 +1,14 @@
+{
+  "name": "lab5_new",
+  "version": "0.0.0",
+  "homepage": "https://github.com/errskipower/websci",
+  "authors": [
+    "Emily Roth <errskipower@gmail.com>"
+  ],
+  "description": "client side",
+  "license": "MIT",
+  "dependencies": {
+    "angular-material": "~0.8.3",
+    "angular-socket-io": "~0.7.0"
+  }
+}
